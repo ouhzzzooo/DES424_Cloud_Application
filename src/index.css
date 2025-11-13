@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+
+    /* Teal/Cyan primary color inspired by the Start button */
+    --primary: 174 72% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 174 72% 46%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 13%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 174 72% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 174 72% 56%;
+
+    --radius: 0.75rem;
+
+    /* Activity card colors */
+    --activity-card: 220 14% 93%;
+    --activity-icon: 220 9% 46%;
+
+    /* Goal progress colors */
+    --progress-incomplete: 220 13% 91%;
+    --progress-complete: 174 72% 56%;
+
+    /* Success/Warning colors */
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(174 72% 56%), hsl(174 72% 46%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+  }
+
+  .dark {
+    --background: 220 13% 13%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 13% 16%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 13% 16%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 174 72% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 174 72% 66%;
+
+    --secondary: 220 13% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 20%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 174 72% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 174 72% 56%;
+
+    --activity-card: 220 13% 18%;
+    --activity-icon: 220 9% 65%;
+
+    --progress-incomplete: 220 13% 20%;
+    --progress-complete: 174 72% 56%;
+
+    --success: 142 71% 55%;
+    --warning: 38 92% 60%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(174 72% 56%), hsl(174 72% 66%));
+    --gradient-card: linear-gradient(180deg, hsl(220 13% 16%), hsl(220 13% 18%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
