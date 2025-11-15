@@ -1,0 +1,1614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.12.1 on darwin)" generated="2025-11-16T00:07:06.990757" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot">
+<suite id="s1-s1" name="Backend Leaderboard" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/backend_leaderboard.robot">
+<test id="s1-s1-t1" name="Leaderboard Endpoint Is Reachable" line="18">
+<kw name="Create Supabase Session">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-16T00:07:07.023439" level="INFO">&amp;{headers} = { apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-H...</msg>
+<var>&amp;{headers}</var>
+<arg>apikey=${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Authorization=Bearer ${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-16T00:07:07.023268" elapsed="0.000192"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:07.023604" level="INFO">Creating Session using : alias=supabase, url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1, headers={'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>supabase</arg>
+<arg>${SUPABASE_REST_URL}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-16T00:07:07.023513" elapsed="0.000162"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:07.023070" elapsed="0.000633"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:08.090983" level="INFO">GET Request : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/leaderboard?select=*&amp;limit=10 
+ path_url=/rest/v1/leaderboard?select=*&amp;limit=10 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-11-16T00:07:08.091161" level="INFO">GET Response : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/leaderboard?select=*&amp;limit=10 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 15 Nov 2025 17:07:08 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Content-Range': '*/*', 'CF-Ray': '99f057d1389437d5-BKK', 'CF-Cache-Status': 'DYNAMIC', 'Content-Location': '/leaderboard?limit=10&amp;select=%2A', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'content-profile': 'public', 'sb-gateway-version': '1', 'sb-project-ref': 'otirjcxvwphevesfqbee', 'sb-request-id': '019a887c-1eca-7c8b-afdd-a0145606e23a', 'X-Content-Type-Options': 'nosniff', 'x-envoy-attempt-count': '1', 'x-envoy-upstream-service-time': '393', 'Set-Cookie': '__cf_bm=3je70tppbmSF1dhrMdnJciZ4ZDHRvnYwcrfRJlytkXw-1763226428-1.0.1.1-_qePINNVL97IG23hsUNhTo7tNlkdWdFEne6APVf4olWnlYGOJs7dN2AlWG25g3tJqsQxj5icYav28BvEfLwC3WjOpCPNDe__I0WeJ12MHbo; path=/; expires=Sat, 15-Nov-25 17:37:08 GMT; domain=.supabase.co; HttpOnly; Secure; SameSite=None', 'Vary': 'Accept-Encoding', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[] 
+ </msg>
+<msg time="2025-11-16T00:07:08.091252" level="INFO">/Users/pongsakorn/Downloads/Cloud-app/.venv-robot/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'otirjcxvwphevesfqbee.supabase.co'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-16T00:07:08.091427" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>supabase</arg>
+<arg>url=/leaderboard</arg>
+<arg>params=select=*&amp;limit=10</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-16T00:07:07.023757" elapsed="1.067697"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T00:07:08.092241" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.091685" elapsed="0.000619"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:07.022765" elapsed="1.069698"/>
+</test>
+<test id="s1-s1-t2" name="User Goals Endpoint Is Reachable" line="23">
+<kw name="Create Supabase Session">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-16T00:07:08.093595" level="INFO">&amp;{headers} = { apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-H...</msg>
+<var>&amp;{headers}</var>
+<arg>apikey=${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Authorization=Bearer ${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.093301" elapsed="0.000326"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:08.093945" level="INFO">Creating Session using : alias=supabase, url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1, headers={'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>supabase</arg>
+<arg>${SUPABASE_REST_URL}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-16T00:07:08.093730" elapsed="0.000567"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:08.093093" elapsed="0.001267"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:08.473301" level="INFO">GET Request : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/user_goals?select=*&amp;limit=10 
+ path_url=/rest/v1/user_goals?select=*&amp;limit=10 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-11-16T00:07:08.473469" level="INFO">GET Response : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/user_goals?select=*&amp;limit=10 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 15 Nov 2025 17:07:08 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Content-Range': '*/*', 'CF-Ray': '99f057d7b82fd02c-BKK', 'CF-Cache-Status': 'DYNAMIC', 'Content-Location': '/user_goals?limit=10&amp;select=%2A', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'content-profile': 'public', 'sb-gateway-version': '1', 'sb-project-ref': 'otirjcxvwphevesfqbee', 'sb-request-id': '019a887c-22e0-7a28-aa60-cc84ad532649', 'X-Content-Type-Options': 'nosniff', 'x-envoy-attempt-count': '1', 'x-envoy-upstream-service-time': '112', 'Set-Cookie': '__cf_bm=vm4OWMcBhBYzyuxSBlQGEvBLQP6nCwNiHD66lltQj5w-1763226428-1.0.1.1-fetnRN_PB_Ze6u55l1Z5EgGh2LnGMFpXRxCfbqZstqXitlP5Zby7nsyRymn5CNvMq3q3TEq4OqyqBs7enNmlMWQkOx58Z_reLOXnfUmwiTg; path=/; expires=Sat, 15-Nov-25 17:37:08 GMT; domain=.supabase.co; HttpOnly; Secure; SameSite=None', 'Vary': 'Accept-Encoding', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[] 
+ </msg>
+<msg time="2025-11-16T00:07:08.473534" level="INFO">/Users/pongsakorn/Downloads/Cloud-app/.venv-robot/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'otirjcxvwphevesfqbee.supabase.co'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-16T00:07:08.473648" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>supabase</arg>
+<arg>url=/user_goals</arg>
+<arg>params=select=*&amp;limit=10</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.094480" elapsed="0.379187"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T00:07:08.474676" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.474010" elapsed="0.000715"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:08.092737" elapsed="0.382111"/>
+</test>
+<status status="PASS" start="2025-11-16T00:07:06.998137" elapsed="1.477023"/>
+</suite>
+<suite id="s1-s2" name="Backend Smoke" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/backend_smoke.robot">
+<test id="s1-s2-t1" name="Frontend Root Returns 200" line="8">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:08.477902" level="INFO">Creating Session using : alias=acttrack, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>acttrack</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-16T00:07:08.477742" elapsed="0.000341"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:08.482558" level="INFO">GET Request : url=http://localhost:8080/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-11-16T00:07:08.482654" level="INFO">GET Response : url=http://localhost:8080/ 
+ status=200, reason=OK 
+ headers={'Vary': 'Origin', 'Content-Type': 'text/html', 'Cache-Control': 'no-cache', 'Etag': 'W/"3c9-uaSvHESZjNzKBPDEb0ZvszFxE7U"', 'Date': 'Sat, 15 Nov 2025 17:07:08 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5', 'Content-Length': '969'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;script type="module"&gt;import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () =&gt; {};
+window.$RefreshSig$ = () =&gt; (type) =&gt; type;&lt;/script&gt;
+
+    &lt;script type="module" src="/@vite/client"&gt;&lt;/script&gt;
+
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;ActTrack&lt;/title&gt;
+    &lt;meta
+      name="description"
+      content="ActTrack helps teams track activities, goals, and progress in real time."
+    /&gt;
+    &lt;meta name="author" content="ActTrack" /&gt;
+
+    &lt;meta property="og:title" content="ActTrack" /&gt;
+    &lt;meta
+      property="og:description"
+      content="ActTrack helps teams track activities, goals, and progress in real time."
+    /&gt;
+    &lt;meta property="og:type" content="website" /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+    &lt;script type="module" src="/src/main.tsx"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg time="2025-11-16T00:07:08.482907" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>acttrack</arg>
+<arg>/</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.478235" elapsed="0.004734"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T00:07:08.483752" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.483254" elapsed="0.000554"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:08.477357" elapsed="0.006595"/>
+</test>
+<status status="PASS" start="2025-11-16T00:07:08.475647" elapsed="0.008557"/>
+</suite>
+<suite id="s1-s3" name="Backend Supabase Rest" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/backend_supabase_rest.robot">
+<test id="s1-s3-t1" name="Activity Types Table Is Reachable" line="18">
+<kw name="Create Supabase Session">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-16T00:07:08.487236" level="INFO">&amp;{headers} = { apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-H...</msg>
+<var>&amp;{headers}</var>
+<arg>apikey=${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Authorization=Bearer ${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.486689" elapsed="0.000578"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:08.487540" level="INFO">Creating Session using : alias=supabase, url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1, headers={'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>supabase</arg>
+<arg>${SUPABASE_REST_URL}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-16T00:07:08.487361" elapsed="0.000377"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:08.486470" elapsed="0.001347"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:09.117068" level="INFO">GET Request : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/activity_types?select=* 
+ path_url=/rest/v1/activity_types?select=* 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-11-16T00:07:09.117212" level="INFO">GET Response : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/activity_types?select=* 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 15 Nov 2025 17:07:08 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Content-Range': '0-3/*', 'CF-Ray': '99f057da3b1d7b50-BKK', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'Content-Location': '/activity_types?select=%2A', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Vary': 'Accept-Encoding', 'content-profile': 'public', 'sb-gateway-version': '1', 'sb-project-ref': 'otirjcxvwphevesfqbee', 'sb-request-id': '019a887c-246e-7974-8aec-ccdccc24a915', 'X-Content-Type-Options': 'nosniff', 'x-envoy-attempt-count': '1', 'x-envoy-upstream-service-time': '45', 'Set-Cookie': '__cf_bm=hgApn8mar783lz3NWPTpWBSdk9eCJ7kCA5Jqz1vidUA-1763226428-1.0.1.1-J2mLcHA_1dOgjH0veCx.2hTUbt5lZiy8nCRY546oxZmpbMnT1L1LxdLDBMtW0s5WTFHBKP2cAijn..raapCMme1n.OG3kzpFbKw1ybIu0zg; path=/; expires=Sat, 15-Nov-25 17:37:08 GMT; domain=.supabase.co; HttpOnly; Secure; SameSite=None', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[{"id":"3fb308b7-3b22-469e-b9f0-389adf4ed17a","name":"Stand","icon":"user-standing","created_at":"2025-10-16T12:11:30.552432+00:00"}, 
+ {"id":"f484e893-5ec9-48ed-91a4-b9b4bbb60aca","name":"Walk","icon":"footprints","created_at":"2025-10-16T12:11:30.552432+00:00"}, 
+ {"id":"45c15fdf-9b98-4351-9e34-30e38a312502","name":"Stairs","icon":"trending-up","created_at":"2025-10-16T12:11:30.552432+00:00"}, 
+ {"id":"042fe7dd-4434-44f9-9bb5-e832ba4bf50b","name":"Bike","icon":"bike","created_at":"2025-10-16T12:11:30.552432+00:00"}] 
+ </msg>
+<msg time="2025-11-16T00:07:09.117329" level="INFO">/Users/pongsakorn/Downloads/Cloud-app/.venv-robot/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'otirjcxvwphevesfqbee.supabase.co'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-16T00:07:09.117500" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>supabase</arg>
+<arg>url=/activity_types</arg>
+<arg>params=select=*</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-16T00:07:08.487940" elapsed="0.629595"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T00:07:09.118428" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.117780" elapsed="0.000721"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:08.486122" elapsed="0.632572"/>
+</test>
+<test id="s1-s3-t2" name="User Profiles Table Is Reachable" line="23">
+<kw name="Create Supabase Session">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-16T00:07:09.120083" level="INFO">&amp;{headers} = { apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-H...</msg>
+<var>&amp;{headers}</var>
+<arg>apikey=${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Authorization=Bearer ${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.119684" elapsed="0.000435"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:09.120485" level="INFO">Creating Session using : alias=supabase, url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1, headers={'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>supabase</arg>
+<arg>${SUPABASE_REST_URL}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-16T00:07:09.120243" elapsed="0.000437"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:09.119411" elapsed="0.001346"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:09.533139" level="INFO">GET Request : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/user_profiles?select=* 
+ path_url=/rest/v1/user_profiles?select=* 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-11-16T00:07:09.533383" level="INFO">GET Response : url=https://otirjcxvwphevesfqbee.supabase.co/rest/v1/user_profiles?select=* 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 15 Nov 2025 17:07:09 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'Content-Range': '0-18/*', 'CF-Ray': '99f057de2abfd017-BKK', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'Content-Location': '/user_profiles?select=%2A', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Vary': 'Accept-Encoding', 'content-profile': 'public', 'sb-gateway-version': '1', 'sb-project-ref': 'otirjcxvwphevesfqbee', 'sb-request-id': '019a887c-26e7-74b7-9b45-42acb7847c14', 'X-Content-Type-Options': 'nosniff', 'x-envoy-attempt-count': '1', 'x-envoy-upstream-service-time': '46', 'Set-Cookie': '__cf_bm=Fui5Oily14TwlD91_5DjMab2Y_gpnvmOM4aKVZE3fmI-1763226429-1.0.1.1-q0S_C_3kc6bJcgrnyltmkdFmmXrXGkRIbpbLh7rG0s3N.vOZGdpAMkEdJGNpi4EbjDGXz326zDup62ZoF2cp9VIo8SyX0c3LdgIf4DYoIJA; path=/; expires=Sat, 15-Nov-25 17:37:09 GMT; domain=.supabase.co; HttpOnly; Secure; SameSite=None', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[{"id":"ee7db71a-1bb1-4895-984f-89fee95dbce5","display_name":"mix@test.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-10-23T17:29:15.094381+00:00","updated_at":"2025-10-23T17:29:15.094381+00:00","email":"mix@test.com"}, 
+ {"id":"30c57a55-c8a8-4433-b654-d820ceba1e24","display_name":"test01@gmail.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":"Female","region_id":null,"created_at":"2025-11-03T15:24:49.497117+00:00","updated_at":"2025-11-03T15:25:21.163374+00:00","email":"test01@gmail.com"}, 
+ {"id":"147bdb2c-a4f9-482c-883d-12d23f47753b","display_name":"testuser20251110232228@example.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-10T16:22:36.976803+00:00","updated_at":"2025-11-10T16:22:36.976803+00:00","email":"testuser20251110232228@example.com"}, 
+ {"id":"f7373e4a-e29f-4427-9e4f-10242b71c079","display_name":"test@ggaa.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-12T05:37:38.534714+00:00","updated_at":"2025-11-12T05:37:38.534714+00:00","email":"test@ggaa.com"}, 
+ {"id":"1313688e-e46a-4f95-85c9-d8e01d0b456e","display_name":"e@c.c","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-12T05:39:31.543116+00:00","updated_at":"2025-11-12T05:39:31.543116+00:00","email":"e@c.c"}, 
+ {"id":"c2f7fbdf-e260-4e31-bafb-a13f9e5565a5","display_name":"a@b.c","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-13T01:02:02.075809+00:00","updated_at":"2025-11-13T01:02:02.075809+00:00","email":"a@b.c"}, 
+ {"id":"acb72265-ff72-4aa5-8984-ba1886b90d9e","display_name":"2pg5tvll7@mozmail.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-13T01:05:55.332361+00:00","updated_at":"2025-11-13T01:05:55.332361+00:00","email":"2pg5tvll7@mozmail.com"}, 
+ {"id":"cc0cff9e-008f-4b27-a4bc-08365dc692ce","display_name":"ouh@test.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":10.00,"date_of_birth":"2004-03-04","sex":"Female","region_id":null,"created_at":"2025-10-23T17:26:36.356484+00:00","updated_at":"2025-11-13T03:00:18.790976+00:00","email":"ouh@test.com"}, 
+ {"id":"e0129928-e2bf-4e72-82e9-d52ce3a7cf95","display_name":"a@test.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-13T16:59:05.810223+00:00","updated_at":"2025-11-13T16:59:05.810223+00:00","email":"a@test.com"}, 
+ {"id":"b9a96bbe-b0a4-4e16-ada2-81e6e34c63c7","display_name":"c8ojrq3u7@mozmail.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-14T13:31:20.531612+00:00","updated_at":"2025-11-14T13:31:20.531612+00:00","email":"c8ojrq3u7@mozmail.com"}, 
+ {"id":"29241502-9843-42a5-b53b-7af8ca441b51","display_name":"a.b@c","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-14T23:40:54.289926+00:00","updated_at":"2025-11-14T23:40:54.289926+00:00","email":"a.b@c"}, 
+ {"id":"5107cc24-752a-4ace-b1dc-8092bcd631fa","display_name":"c@b.a","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T03:14:20.903853+00:00","updated_at":"2025-11-15T03:14:20.903853+00:00","email":"c@b.a"}, 
+ {"id":"870e708b-1a08-4f4d-ba21-3cc1873ee1f1","display_name":"test@gmail.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T07:46:48.003975+00:00","updated_at":"2025-11-15T07:46:48.003975+00:00","email":"test@gmail.com"}, 
+ {"id":"c9bd517b-bf8a-4347-9b24-4844d83ffaf8","display_name":"ojic@asd.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T07:47:00.389929+00:00","updated_at":"2025-11-15T07:47:00.389929+00:00","email":"ojic@asd.com"}, 
+ {"id":"30a1172a-9abb-49c6-b304-f53819a00e7a","display_name":"oumchanyanud@gmail.com","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T07:47:34.550183+00:00","updated_at":"2025-11-15T07:47:34.550183+00:00","email":"oumchanyanud@gmail.com"}, 
+ {"id":"dcb70798-82eb-4901-b92b-1ccac990e81c","display_name":"Pongsakorn Limjaroenvanich","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T09:21:35.028963+00:00","updated_at":"2025-11-15T09:21:35.028963+00:00","email":"6522772332@g.siit.tu.ac.th"}, 
+ {"id":"91d4672d-5814-4466-8582-d043f4d23303","display_name":"Pongsakorn Limjaroenvanich","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T11:04:13.245525+00:00","updated_at":"2025-11-15T11:04:13.245525+00:00","email":"ouhtup.39@gmail.com"}, 
+ {"id":"50cd3349-ab74-4c9d-b755-abef5c62ff52","display_name":"Anawin Srivoranan","avatar_url":null,"age":null,"height_cm":null,"weight_kg":null,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T11:05:58.791683+00:00","updated_at":"2025-11-15T11:05:58.791683+00:00","email":"anawintae46@gmail.com"}, 
+ {"id":"a9a280b0-124a-44a8-9fce-ec233b1d7807","display_name":"tae@test.com","avatar_url":null,"age":null,"height_cm":200.00,"weight_kg":100.00,"date_of_birth":null,"sex":null,"region_id":null,"created_at":"2025-11-15T10:08:37.990297+00:00","updated_at":"2025-11-15T11:29:12.411081+00:00","email":"tae@test.com"}] 
+ </msg>
+<msg time="2025-11-16T00:07:09.533857" level="INFO">/Users/pongsakorn/Downloads/Cloud-app/.venv-robot/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'otirjcxvwphevesfqbee.supabase.co'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-16T00:07:09.534072" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>supabase</arg>
+<arg>url=/user_profiles</arg>
+<arg>params=select=*</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.120900" elapsed="0.413207"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-16T00:07:09.535020" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.534362" elapsed="0.000730"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:09.118954" elapsed="0.416380"/>
+</test>
+<status status="PASS" start="2025-11-16T00:07:08.484570" elapsed="1.051096"/>
+</suite>
+<suite id="s1-s4" name="Backend Track Activity" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/backend_track_activity.robot">
+<test id="s1-s4-t1" name="Track Activity Function Responds" line="17">
+<kw name="Create Track Activity Session">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-16T00:07:09.539332" level="INFO">&amp;{headers} = { apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-H...</msg>
+<var>&amp;{headers}</var>
+<arg>apikey=${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Authorization=Bearer ${SUPABASE_PUBLISHABLE_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.538935" elapsed="0.000435"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:09.539751" level="INFO">Creating Session using : alias=track_activity, url=https://otirjcxvwphevesfqbee.supabase.co/functions/v1/track-activity, headers={'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>track_activity</arg>
+<arg>${SUPABASE_FUNCTION_URL}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-11-16T00:07:09.539499" elapsed="0.000440"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:09.538653" elapsed="0.001365"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-16T00:07:09.540462" level="INFO">&amp;{payload} = { timestamp=2025-01-01T00:00:00Z | duration_seconds=120 | activity=Walk | confidence=0.95 | user=robot-test-user | device=robot-device }</msg>
+<var>&amp;{payload}</var>
+<arg>timestamp=2025-01-01T00:00:00Z</arg>
+<arg>duration_seconds=120</arg>
+<arg>activity=Walk</arg>
+<arg>confidence=0.95</arg>
+<arg>user=robot-test-user</arg>
+<arg>device=robot-device</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.540179" elapsed="0.000315"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-11-16T00:07:10.750129" level="INFO">POST Request : url=https://otirjcxvwphevesfqbee.supabase.co/functions/v1/track-activity/ 
+ path_url=/functions/v1/track-activity/ 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90aXJqY3h2d3BoZXZlc2ZxYmVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDMxNDIsImV4cCI6MjA3NjE3OTE0Mn0.CXZ34QnpduWNJHd9D7aQ9Cj3-Heuw0-bFqzHfeocMnc', 'Content-Type': 'application/json', 'Content-Length': '159'} 
+ body=b'{"timestamp": "2025-01-01T00:00:00Z", "duration_seconds": "120", "activity": "Walk", "confidence": "0.95", "user": "robot-test-user", "device": "robot-device"}' 
+ </msg>
+<msg time="2025-11-16T00:07:10.750181" level="INFO">POST Response : url=https://otirjcxvwphevesfqbee.supabase.co/functions/v1/track-activity/ 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Sat, 15 Nov 2025 17:07:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '56', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'CF-Ray': '99f057e0c84f2731-BKK', 'CF-Cache-Status': 'DYNAMIC', 'Access-Control-Allow-Origin': '*', 'Content-Encoding': 'gzip', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Vary': 'Accept-Encoding', 'access-control-allow-headers': 'authorization, x-client-info, apikey, content-type', 'sb-project-ref': 'otirjcxvwphevesfqbee', 'sb-request-id': '019a887c-2888-77fb-bb77-cce904ae214e', 'x-deno-execution-id': '051d4e57-390f-48d3-abd9-32b0af141a69', 'x-sb-edge-region': 'ap-southeast-1', 'x-served-by': 'supabase-edge-runtime', 'Set-Cookie': '__cf_bm=YirNISvWXQbBPRSziD4_T8e.W.QvvXZUYilzCwoDL4g-1763226430-1.0.1.1-7wQx.6.MaaZGpYT1.IVseyfSt0yAOsthWeQFD7m3tpaJoU.c6CKoGUpNOBsIpWc31g7pNc_3g1za3BUFRVcdic6d_.ysYqzhmIMQhT3CziY; path=/; expires=Sat, 15-Nov-25 17:37:10 GMT; domain=.supabase.co; HttpOnly; Secure; SameSite=None', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"success":false,"error":"Unknown error"} 
+ </msg>
+<msg time="2025-11-16T00:07:10.750224" level="INFO">/Users/pongsakorn/Downloads/Cloud-app/.venv-robot/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'otirjcxvwphevesfqbee.supabase.co'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-11-16T00:07:10.750296" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>track_activity</arg>
+<arg>/</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-11-16T00:07:09.540673" elapsed="1.209635"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-16T00:07:10.750614" level="INFO">${status} = 400</msg>
+<var>${status}</var>
+<arg>${resp.status_code}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-16T00:07:10.750398" elapsed="0.000226"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>track-activity status: ${status}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-16T00:07:10.750677" elapsed="0.000060"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:09.537880" elapsed="1.212915"/>
+</test>
+<status status="PASS" start="2025-11-16T00:07:09.536159" elapsed="1.214742"/>
+</suite>
+<suite id="s1-s5" name="Frontend Activity" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_activity.robot">
+<kw name="Setup Activity Page" type="SETUP">
+<kw name="Login As Test User" owner="auth_keywords">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:10.840919" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/54dc331f-3f1d-4337-b9db-44899970c64d"}</msg>
+<msg time="2025-11-16T00:07:10.857473" level="INFO">Starting Browser process /Users/pongsakorn/Downloads/Cloud-app/.venv-robot/lib/python3.12/site-packages/Browser/wrapper/index.js using at 127.0.0.1:60848</msg>
+<msg time="2025-11-16T00:07:12.180895" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/54dc331f-3f1d-4337-b9db-44899970c64d"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:10.840637" elapsed="1.340472"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:12.297142" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:12.297191" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:12.183211" elapsed="0.114061"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:12.326823" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:12.297371" elapsed="0.029573"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:12.327407" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:12.327070" elapsed="0.016435"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:12.343845" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:12.343602" elapsed="0.028891"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:12.372798" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:12.372595" elapsed="0.032895"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:13.193719" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:12.405587" elapsed="0.788383"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:10.840489" elapsed="2.353684"/>
+</kw>
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:13.225009" level="INFO">Successfully opened URL http://localhost:8080/activity</msg>
+<arg>${BASE_URL}/activity</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.194419" elapsed="0.030676"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:10.840368" elapsed="2.384790"/>
+</kw>
+<test id="s1-s5-t1" name="Activity Header Is Visible" line="14">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:13.253772" level="INFO">Waited for Element with selector role=heading[name="Activity"] at state visible</msg>
+<arg>role=heading[name="Activity"]</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.243711" elapsed="0.010140"/>
+</kw>
+<doc>Verify the Activity page header shows after login.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.225220" elapsed="0.028754"/>
+</test>
+<test id="s1-s5-t2" name="Activity Has Time Range Tabs" line="19">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:13.260308" level="INFO">Waited for Element with selector text=Day at state visible</msg>
+<arg>text=Day</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.257984" elapsed="0.002386"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:13.263044" level="INFO">Waited for Element with selector text=Week at state visible</msg>
+<arg>text=Week</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.260494" elapsed="0.002606"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:13.265340" level="INFO">Waited for Element with selector text=Month at state visible</msg>
+<arg>text=Month</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.263207" elapsed="0.002204"/>
+</kw>
+<doc>Check that the Day/Week/Month tabs are rendered.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.256485" elapsed="0.009049"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:13.280307" level="INFO">Closed all browsers</msg>
+<arg>ALL</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.267782" elapsed="0.012595"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:10.751032" elapsed="2.529385"/>
+</suite>
+<suite id="s1-s6" name="Frontend Dashboard" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_dashboard.robot">
+<kw name="Open Dashboard After Login" type="SETUP">
+<kw name="Login As Test User" owner="auth_keywords">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:13.286295" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/bee637f6-5601-47ed-b6c5-d896e7cbdd19"}</msg>
+<msg time="2025-11-16T00:07:13.348034" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/bee637f6-5601-47ed-b6c5-d896e7cbdd19"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.285996" elapsed="0.062130"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:13.460169" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:13.460213" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.348231" elapsed="0.112045"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:13.489283" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.460373" elapsed="0.029047"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:13.489947" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.489597" elapsed="0.015134"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:13.505114" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.504841" elapsed="0.031533"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:13.536739" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.536486" elapsed="0.034780"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:14.858111" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.571366" elapsed="1.286830"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:13.285921" elapsed="1.572335"/>
+</kw>
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:14.882872" level="INFO">Successfully opened URL http://localhost:8080/dashboard</msg>
+<arg>${BASE_URL}/dashboard</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.858330" elapsed="0.024633"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:13.285804" elapsed="1.597226"/>
+</kw>
+<test id="s1-s6-t1" name="Dashboard Header Is Visible" line="17">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:14.913731" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.904061" elapsed="0.009757"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:14.883074" elapsed="0.030873"/>
+</test>
+<test id="s1-s6-t2" name="Dashboard Shows Activity Section" line="20">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:14.921465" level="INFO">Waited for Element with selector text=Activity at state visible</msg>
+<arg>text=Activity</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.918208" elapsed="0.003337"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:14.916691" elapsed="0.004993"/>
+</test>
+<test id="s1-s6-t3" name="Dashboard View All Navigates To Goals" line="23">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:14.927371" level="INFO">Waited for Element with selector text=View All at state visible</msg>
+<arg>text=View All</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.925166" elapsed="0.002266"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:14.927765" level="INFO">Clicks the element 'text=View All'.</msg>
+<arg>text=View All</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.927542" elapsed="0.028133"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:14.957964" level="INFO">Waited for Element with selector text=My goals at state visible</msg>
+<arg>text=My goals</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.955836" elapsed="0.002200"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:14.923912" elapsed="0.034246"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:14.973534" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.960289" elapsed="0.013324"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:13.283724" elapsed="1.689931"/>
+</suite>
+<suite id="s1-s7" name="Frontend Edit Goal" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_edit_goal.robot">
+<kw name="Login As Test User" owner="auth_keywords" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:14.977921" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/c407ac87-3533-4fa8-b6d5-256386bcf119"}</msg>
+<msg time="2025-11-16T00:07:15.043328" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/c407ac87-3533-4fa8-b6d5-256386bcf119"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.977638" elapsed="0.065790"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:15.152963" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:15.153005" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:15.043545" elapsed="0.109522"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:15.182680" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:15.153163" elapsed="0.029615"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:15.183241" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:15.182897" elapsed="0.014646"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:15.197908" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:15.197645" elapsed="0.029613"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:15.227672" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:15.227414" elapsed="0.026719"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:16.038389" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:15.254241" elapsed="0.784231"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:14.977531" elapsed="1.060999"/>
+</kw>
+<test id="s1-s7-t1" name="Edit Goal Placeholder" line="12">
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:16.065824" level="INFO">Successfully opened URL http://localhost:8080/goals</msg>
+<arg>${BASE_URL}/goals</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.039978" elapsed="0.025932"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:16.090979" level="INFO">Waited for Element with selector text=My goals at state visible</msg>
+<arg>text=My goals</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.066072" elapsed="0.024992"/>
+</kw>
+<kw name="Pass Execution" owner="BuiltIn">
+<msg time="2025-11-16T00:07:16.091335" level="INFO">Execution passed with message:
+Skipping detailed edit-goal verification (no stable goal id to edit yet).</msg>
+<arg>Skipping detailed edit-goal verification (no stable goal id to edit yet).</arg>
+<doc>Skips rest of the current test, setup, or teardown with PASS status.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.091205" elapsed="0.000179">Skipping detailed edit-goal verification (no stable goal id to edit yet).</status>
+</kw>
+<doc>Placeholder E2E: just verify Goals page loads after login.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.038569" elapsed="0.052966">Skipping detailed edit-goal verification (no stable goal id to edit yet).</status>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:16.107376" level="INFO">Closed all browsers</msg>
+<arg>ALL</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.094402" elapsed="0.013056"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:14.975556" elapsed="1.131942"/>
+</suite>
+<suite id="s1-s8" name="Frontend Goals" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_goals.robot">
+<kw name="Open Goals Page Logged In" type="SETUP">
+<kw name="Login As Test User" owner="auth_keywords">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:16.111734" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/31ee5a3f-f512-4576-b14d-f3258e4dafa0"}</msg>
+<msg time="2025-11-16T00:07:16.176251" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/31ee5a3f-f512-4576-b14d-f3258e4dafa0"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.111458" elapsed="0.064888"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:16.282382" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:16.282429" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.176466" elapsed="0.106036"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:16.312381" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.282599" elapsed="0.029870"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:16.312836" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.312565" elapsed="0.014505"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:16.327463" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.327179" elapsed="0.030902"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:16.358417" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.358185" elapsed="0.029137"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:17.172226" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.387421" elapsed="0.785064"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:16.111379" elapsed="1.061283"/>
+</kw>
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:17.203387" level="INFO">Successfully opened URL http://localhost:8080/goals</msg>
+<arg>${BASE_URL}/goals</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.172884" elapsed="0.030601"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:17.227337" level="INFO">Waited for Element with selector text=My goals at state visible</msg>
+<arg>text=My goals</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.203586" elapsed="0.023840"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:16.111262" elapsed="1.116223"/>
+</kw>
+<test id="s1-s8-t1" name="Goals Page Header Is Visible" line="18">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:17.232314" level="INFO">Waited for Element with selector text=My goals at state visible</msg>
+<arg>text=My goals</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.229799" elapsed="0.002576"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:17.227523" elapsed="0.004973"/>
+</test>
+<test id="s1-s8-t2" name="Goals Page Shows Add New Goal Button" line="21">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:17.238812" level="INFO">Waited for Element with selector text=Add new goal at state visible</msg>
+<arg>text=Add new goal</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.236850" elapsed="0.002017"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:17.235174" elapsed="0.003796"/>
+</test>
+<test id="s1-s8-t3" name="Add New Goal Button Navigates To New Goal Page" line="24">
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:17.241581" level="INFO">Clicks the element 'text=Add new goal'.</msg>
+<arg>text=Add new goal</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.241404" elapsed="0.032777"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:17.276271" level="INFO">Waited for Element with selector text=ActTrack at state visible</msg>
+<arg>text=ActTrack</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.274339" elapsed="0.001976"/>
+</kw>
+<kw name="Get Url" owner="Browser">
+<msg time="2025-11-16T00:07:17.277217" level="INFO">${url} = http://localhost:8080/goals/new</msg>
+<var>${url}</var>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.276400" elapsed="0.000829"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>/goals/new</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.277299" elapsed="0.000078"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:17.240397" elapsed="0.037035"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:17.291791" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.279146" elapsed="0.012724"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:16.109373" elapsed="1.182536"/>
+</suite>
+<suite id="s1-s9" name="Frontend Leaderboard Page" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_leaderboard_page.robot">
+<kw name="Login As Test User And Open Page" owner="auth_keywords" type="SETUP">
+<kw name="Login As Test User" owner="auth_keywords">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:17.295806" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/40978097-62e6-4336-8f9f-986a39a34a99"}</msg>
+<msg time="2025-11-16T00:07:17.361098" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/40978097-62e6-4336-8f9f-986a39a34a99"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.295525" elapsed="0.065667"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:17.466135" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:17.466180" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.361293" elapsed="0.104954"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:17.495157" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.466340" elapsed="0.028957"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:17.495790" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.495421" elapsed="0.014965"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:17.510749" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.510485" elapsed="0.031517"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:17.542315" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.542097" elapsed="0.028975"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:18.357455" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.571166" elapsed="0.786487"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:17.295442" elapsed="1.062335"/>
+</kw>
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:18.384095" level="INFO">Successfully opened URL http://localhost:8080/leaderboard</msg>
+<arg>${BASE_URL}${path}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:18.357939" elapsed="0.026243"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:18.413993" level="INFO">Waited for Element with selector text=ActTrack at state visible</msg>
+<arg>text=ActTrack</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:18.384284" elapsed="0.029788"/>
+</kw>
+<arg>/leaderboard</arg>
+<doc>Login and then navigate to a specific path (e.g. /profile).</doc>
+<status status="PASS" start="2025-11-16T00:07:17.295318" elapsed="1.118809"/>
+</kw>
+<test id="s1-s9-t1" name="Leaderboard Header Is Visible :: Verify the Leaderboard page header is shown" line="9">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-11-16T00:07:18.432471" level="INFO">Text: 'Leaderboard'</msg>
+<msg time="2025-11-16T00:07:18.432566" level="INFO">${heading} = Leaderboard</msg>
+<var>${heading}</var>
+<arg>role=heading[name="Leaderboard"]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:18.416585" elapsed="0.015993"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${heading}</arg>
+<arg>Leaderboard</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-16T00:07:18.432722" elapsed="0.000172"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:18.414167" elapsed="0.018801"/>
+</test>
+<test id="s1-s9-t2" name="Leaderboard Shows List Or Empty State :: Verify the leaderboard list or empty state" line="13">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-11-16T00:07:28.467073" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg time="2025-11-16T00:07:28.467140" level="INFO">See also file:///Users/pongsakorn/Downloads/Cloud-app/robot_reports/playwright-log.txt for additional details.</msg>
+<msg time="2025-11-16T00:07:28.467335" level="FAIL">TimeoutError: locator.elementHandle: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody tr')
+</msg>
+<arg>css=tbody tr</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="FAIL" start="2025-11-16T00:07:18.436186" elapsed="10.032351">TimeoutError: locator.elementHandle: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody tr')
+</status>
+</kw>
+<msg time="2025-11-16T00:07:28.468611" level="INFO">${has_rows} = False</msg>
+<var>${has_rows}</var>
+<arg>Get Text</arg>
+<arg>css=tbody tr</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-11-16T00:07:18.436066" elapsed="10.032557"/>
+</kw>
+<if>
+<branch type="IF" condition="${has_rows}">
+<kw name="Log" owner="BuiltIn">
+<arg>Leaderboard has at least one row.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-11-16T00:07:28.468820" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2025-11-16T00:07:28.468712" elapsed="0.000151"/>
+</branch>
+<branch type="ELSE">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-11-16T00:07:28.473620" level="INFO">Text: 'No leaderboard data available for this selection.'</msg>
+<msg time="2025-11-16T00:07:28.473682" level="INFO">${empty_text} = No leaderboard data available for this selection.</msg>
+<var>${empty_text}</var>
+<arg>text=No leaderboard data</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.468932" elapsed="0.004760"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${empty_text}</arg>
+<arg>No leaderboard data</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.473761" elapsed="0.000091"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.468882" elapsed="0.004989"/>
+</branch>
+<status status="PASS" start="2025-11-16T00:07:28.468693" elapsed="0.005197"/>
+</if>
+<status status="PASS" start="2025-11-16T00:07:18.435036" elapsed="10.038917"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:28.488195" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.476061" elapsed="0.012228"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:17.293502" elapsed="11.194830"/>
+</suite>
+<suite id="s1-s10" name="Frontend Not Found" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_not_found.robot">
+<kw name="Open Invalid Page" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:28.492547" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/a6391be4-2282-4ab2-98dd-536d41ca4965"}</msg>
+<msg time="2025-11-16T00:07:28.558720" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/a6391be4-2282-4ab2-98dd-536d41ca4965"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.492255" elapsed="0.066575"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:28.677450" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/this-page-does-not-exist</msg>
+<msg time="2025-11-16T00:07:28.677496" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/this-page-does-not-exist</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.558955" elapsed="0.118609"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:28.702416" level="INFO">Waited for Element with selector text=Oops! Page not found at state visible</msg>
+<arg>text=Oops! Page not found</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.677663" elapsed="0.024873"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.492144" elapsed="0.210468"/>
+</kw>
+<test id="s1-s10-t1" name="Not Found Header Is Visible :: Verify the 404 / NotFound header is rendered" line="18">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-11-16T00:07:28.721107" level="INFO">Text: '404'</msg>
+<msg time="2025-11-16T00:07:28.721183" level="INFO">${heading} = 404</msg>
+<var>${heading}</var>
+<arg>role=heading[name="404"]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.704194" elapsed="0.017001"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${heading}</arg>
+<arg>404</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.721314" elapsed="0.000139"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.702655" elapsed="0.018860"/>
+</test>
+<test id="s1-s10-t2" name="Not Found Has Dashboard Link :: Verify we offer a way back via button" line="22">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:28.726408" level="INFO">Waited for Element with selector role=link[name="Return to Home"] at state visible</msg>
+<arg>role=link[name="Return to Home"]</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.724531" elapsed="0.001928"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:28.726757" level="INFO">Clicks the element 'role=link[name="Return to Home"]'.</msg>
+<arg>role=link[name="Return to Home"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.726556" elapsed="0.022874"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-16T00:07:28.749942" level="INFO">Clicked Return to Home from 404 page.</msg>
+<arg>Clicked Return to Home from 404 page.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.749606" elapsed="0.000473"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.723412" elapsed="0.026817"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:28.814229" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.802125" elapsed="0.012184"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.490235" elapsed="0.324112"/>
+</suite>
+<suite id="s1-s11" name="Frontend Notifications Page" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_notifications_page.robot">
+<kw name="Login And Open Notifications Page" type="SETUP">
+<kw name="Login As Test User" owner="auth_keywords">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:28.818314" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/a7ab2d1b-5677-46c5-a6d9-eda08776806e"}</msg>
+<msg time="2025-11-16T00:07:28.879738" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/a7ab2d1b-5677-46c5-a6d9-eda08776806e"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.818031" elapsed="0.061810"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:28.986443" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:28.986488" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.879953" elapsed="0.106602"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:29.016432" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.986651" elapsed="0.029908"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:29.017002" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.016678" elapsed="0.014797"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:29.031864" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.031583" elapsed="0.032379"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:29.064342" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.064071" elapsed="0.040063"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:29.887489" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.104238" elapsed="0.783445"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:28.817951" elapsed="1.069849"/>
+</kw>
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:29.913145" level="INFO">Successfully opened URL http://localhost:8080/notifications</msg>
+<arg>${BASE_URL}/notifications</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.887944" elapsed="0.025299"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:29.936773" level="INFO">Waited for Element with selector role=heading[name="Notifications"] at state visible</msg>
+<arg>role=heading[name="Notifications"]</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.913345" elapsed="0.023514"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.817824" elapsed="1.119097"/>
+</kw>
+<test id="s1-s11-t1" name="Notifications Header Is Visible" line="17">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:29.940787" level="INFO">Waited for Element with selector role=heading[name="Notifications"] at state visible</msg>
+<arg>role=heading[name="Notifications"]</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.938940" elapsed="0.001895"/>
+</kw>
+<doc>Verify the Notifications page header shows up.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.936963" elapsed="0.003971"/>
+</test>
+<test id="s1-s11-t2" name="Notifications Shows Empty Or List" line="21">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:31.238111" level="INFO">Waited for Element with selector text=No notifications yet at state visible</msg>
+<arg>text=No notifications yet</arg>
+<arg>visible</arg>
+<arg>timeout=3s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.945940" elapsed="1.292370"/>
+</kw>
+<msg time="2025-11-16T00:07:31.238477" level="INFO">${has_empty} = True</msg>
+<var>${has_empty}</var>
+<arg>Wait For Elements State</arg>
+<arg>text=No notifications yet</arg>
+<arg>visible</arg>
+<arg>timeout=3s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.945587" elapsed="1.292913"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-16T00:07:31.239169" level="INFO">Notifications empty state shown</msg>
+<arg>Notifications empty state shown</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.239047" elapsed="0.000158"/>
+</kw>
+<arg>${has_empty}</arg>
+<arg>Log</arg>
+<arg>Notifications empty state shown</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>Notifications list rendered or other state present</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.238719" elapsed="0.000534"/>
+</kw>
+<doc>Accept either an empty state or a populated list.</doc>
+<status status="PASS" start="2025-11-16T00:07:29.943230" elapsed="1.296210"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:31.255308" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.242351" elapsed="0.013042"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:28.816002" elapsed="2.439431"/>
+</suite>
+<suite id="s1-s12" name="Frontend Profile" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_profile.robot">
+<kw name="Login As Test User And Open Page" owner="auth_keywords" type="SETUP">
+<kw name="Login As Test User" owner="auth_keywords">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:31.259511" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/f4d4620b-5f70-45a0-9371-3c8a44b37745"}</msg>
+<msg time="2025-11-16T00:07:31.322311" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/f4d4620b-5f70-45a0-9371-3c8a44b37745"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.259230" elapsed="0.063304"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:31.434811" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080/auth</msg>
+<msg time="2025-11-16T00:07:31.434856" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}/auth</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.322652" elapsed="0.112271"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:31.464965" level="INFO">Waited for Element with selector id=signin-email at state visible</msg>
+<arg>id=signin-email</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.435020" elapsed="0.030051"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:31.465489" level="INFO">Fills the text 'ouh@test.com' in the given field.</msg>
+<arg>id=signin-email</arg>
+<arg>${TEST_EMAIL}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.465180" elapsed="0.014609"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-11-16T00:07:31.480161" level="INFO">Fills the text 'ouh123' in the given field.</msg>
+<arg>id=signin-password</arg>
+<arg>${TEST_PASSWORD}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.479892" elapsed="0.021538"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2025-11-16T00:07:31.501801" level="INFO">Clicks the element 'role=button[name="Sign In"]'.</msg>
+<arg>role=button[name="Sign In"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.501545" elapsed="0.035764"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:32.326737" level="INFO">Waited for Element with selector text=Home Dashboard at state visible</msg>
+<arg>text=Home Dashboard</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.537417" elapsed="0.789764"/>
+</kw>
+<doc>Open browser, go to /auth, and log in as the test user.</doc>
+<status status="PASS" start="2025-11-16T00:07:31.259147" elapsed="1.068266"/>
+</kw>
+<kw name="Go To" owner="Browser">
+<msg time="2025-11-16T00:07:32.370217" level="INFO">Successfully opened URL http://localhost:8080/profile</msg>
+<arg>${BASE_URL}${path}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.327694" elapsed="0.042633"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:32.399388" level="INFO">Waited for Element with selector text=ActTrack at state visible</msg>
+<arg>text=ActTrack</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.370457" elapsed="0.029021"/>
+</kw>
+<arg>/profile</arg>
+<doc>Login and then navigate to a specific path (e.g. /profile).</doc>
+<status status="PASS" start="2025-11-16T00:07:31.259006" elapsed="1.140534"/>
+</kw>
+<test id="s1-s12-t1" name="Profile Header Is Visible" line="12">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:32.404508" level="INFO">Waited for Element with selector text=Profile at state visible</msg>
+<arg>text=Profile</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.401987" elapsed="0.002592"/>
+</kw>
+<doc>Verify the Profile page header is rendered.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.399581" elapsed="0.005103"/>
+</test>
+<test id="s1-s12-t2" name="Profile Shows Account Information Section" line="18">
+<kw name="Get Element" owner="Browser">
+<msg time="2025-11-16T00:07:32.409994" level="INFO">Locator found successfully.</msg>
+<msg time="2025-11-16T00:07:32.410064" level="INFO">${el} = text=Name</msg>
+<var>${el}</var>
+<arg>text=Name</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to a Playwright [https://playwright.dev/docs/api/class-locator|Locator].</doc>
+<status status="PASS" start="2025-11-16T00:07:32.407869" elapsed="0.002206"/>
+</kw>
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2025-11-16T00:07:32.410281" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<arg>${el}</arg>
+<arg>${None}</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.410173" elapsed="0.000129"/>
+</kw>
+<doc>Verify that the main profile info section (e.g. Name field) is visible.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.406539" elapsed="0.003823"/>
+</test>
+<test id="s1-s12-t3" name="Profile Shows Notification Settings" line="25">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:32.414584" level="INFO">Waited for Element with selector text=Notification Setting at state visible</msg>
+<arg>text=Notification Setting</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.412980" elapsed="0.001651"/>
+</kw>
+<doc>Verify the notification settings card is visible.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.411831" elapsed="0.002880"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:32.426115" level="INFO">Closed all browsers</msg>
+<arg>ALL</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.416454" elapsed="0.009742"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:31.257275" elapsed="1.168959"/>
+</suite>
+<suite id="s1-s13" name="Frontend Smoke" source="/Users/pongsakorn/Downloads/Cloud-app/tests/robot/frontend_smoke.robot">
+<kw name="Open App In Browser" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-11-16T00:07:32.429716" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/24414110-03ae-4ff9-a922-0d80cc154828"}</msg>
+<msg time="2025-11-16T00:07:32.510597" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/Users/pongsakorn/Downloads/Cloud-app/robot_reports/browser/traces/temp/24414110-03ae-4ff9-a922-0d80cc154828"}</msg>
+<arg>chromium</arg>
+<arg>headless=${TRUE}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.429417" elapsed="0.081280"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-11-16T00:07:32.620319" level="INFO">Successfully initialized new page object and opened url: http://localhost:8080</msg>
+<msg time="2025-11-16T00:07:32.620364" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.510811" elapsed="0.109619"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:32.429284" elapsed="0.191206"/>
+</kw>
+<test id="s1-s13-t1" name="App Loads And Shows Title" line="16">
+<kw name="Get Title" owner="Browser">
+<msg time="2025-11-16T00:07:32.645141" level="INFO">Title: 'ActTrack'</msg>
+<msg time="2025-11-16T00:07:32.645243" level="INFO">${title} = ActTrack</msg>
+<var>${title}</var>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.642555" elapsed="0.002701"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${title}</arg>
+<arg>ActTrack</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.645399" elapsed="0.000138"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:32.620528" elapsed="0.025076"/>
+</test>
+<test id="s1-s13-t2" name="Login Section Is Visible" line="20">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2025-11-16T00:07:32.659305" level="INFO">Waited for Element with selector text=Sign in at state visible</msg>
+<arg>text=Sign in</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.649264" elapsed="0.010129"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:32.647630" elapsed="0.011897"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2025-11-16T00:07:32.671104" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-16T00:07:32.661491" elapsed="0.009697"/>
+</kw>
+<status status="PASS" start="2025-11-16T00:07:32.427788" elapsed="0.243438"/>
+</suite>
+<status status="PASS" start="2025-11-16T00:07:06.992064" elapsed="25.680981"/>
+</suite>
+<statistics>
+<total>
+<stat pass="26" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robot" id="s1" pass="26" fail="0" skip="0">Robot</stat>
+<stat name="Backend Leaderboard" id="s1-s1" pass="2" fail="0" skip="0">Robot.Backend Leaderboard</stat>
+<stat name="Backend Smoke" id="s1-s2" pass="1" fail="0" skip="0">Robot.Backend Smoke</stat>
+<stat name="Backend Supabase Rest" id="s1-s3" pass="2" fail="0" skip="0">Robot.Backend Supabase Rest</stat>
+<stat name="Backend Track Activity" id="s1-s4" pass="1" fail="0" skip="0">Robot.Backend Track Activity</stat>
+<stat name="Frontend Activity" id="s1-s5" pass="2" fail="0" skip="0">Robot.Frontend Activity</stat>
+<stat name="Frontend Dashboard" id="s1-s6" pass="3" fail="0" skip="0">Robot.Frontend Dashboard</stat>
+<stat name="Frontend Edit Goal" id="s1-s7" pass="1" fail="0" skip="0">Robot.Frontend Edit Goal</stat>
+<stat name="Frontend Goals" id="s1-s8" pass="3" fail="0" skip="0">Robot.Frontend Goals</stat>
+<stat name="Frontend Leaderboard Page" id="s1-s9" pass="2" fail="0" skip="0">Robot.Frontend Leaderboard Page</stat>
+<stat name="Frontend Not Found" id="s1-s10" pass="2" fail="0" skip="0">Robot.Frontend Not Found</stat>
+<stat name="Frontend Notifications Page" id="s1-s11" pass="2" fail="0" skip="0">Robot.Frontend Notifications Page</stat>
+<stat name="Frontend Profile" id="s1-s12" pass="3" fail="0" skip="0">Robot.Frontend Profile</stat>
+<stat name="Frontend Smoke" id="s1-s13" pass="2" fail="0" skip="0">Robot.Frontend Smoke</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
