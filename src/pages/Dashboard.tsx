@@ -10,10 +10,10 @@ import { useGoals } from '@/hooks/useGoals';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const activityIcons: Record<string, any> = {
-  stand: UserRound,
-  walk: Footprints,
-  stairs: TrendingUp,
-  bike: Bike,
+  Stand: UserRound,
+  Walk: Footprints,
+  Stairs: TrendingUp,
+  Bike: Bike,
 };
 
 const Dashboard = () => {
@@ -103,7 +103,7 @@ const Dashboard = () => {
                 return (
                   <GoalCard 
                     key={goal.id} 
-                    icon={activityIcons[goal.activity_types?.name || 'walk'] || Footprints}
+                    icon={activityIcons[goal.activity_types?.name || 'Walk'] || Footprints}
                     name={goal.name}
                     progress={progress}
                     deadline={new Date(goal.end_date || goal.start_date).toLocaleDateString('en-US', {
@@ -113,7 +113,7 @@ const Dashboard = () => {
                       year: 'numeric',
                     })}
                     onEdit={() => navigate('/goals')}
-                    onDelete={() => {}}
+                    onDelete={() => navigate('/goals')}
                   />
                 );
               })}

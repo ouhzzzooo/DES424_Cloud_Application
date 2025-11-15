@@ -24,10 +24,10 @@ const NewGoal = () => {
   const [deadline, setDeadline] = useState('');
 
   const activityIcons: Record<string, any> = {
-    stand: UserRound,
-    walk: Footprints,
-    stairs: TrendingUp,
-    bike: Bike,
+    Stand: UserRound,
+    Walk: Footprints,
+    Stairs: TrendingUp,
+    Bike: Bike,
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
