@@ -22,7 +22,7 @@ export const useLeaderboard = (
   return useQuery({
     queryKey: ['leaderboard', timeRange, scope, activityTypeId, user?.id],
     queryFn: async () => {
-      // If scope is 'friend', first get the user's friend IDs
+      // 1) Friend scope: collect friend IDs
       let friendIds: string[] = [];
       if (scope === 'friend' && user) {
         const { data: friendships, error: friendError } = await supabase
@@ -33,14 +33,15 @@ export const useLeaderboard = (
 
         if (friendError) throw friendError;
 
-        friendIds = friendships?.map(f => 
-          f.user_id === user.id ? f.friend_user_id : f.user_id
-        ) || [];
+        friendIds =
+          friendships?.map(f =>
+            f.user_id === user.id ? f.friend_user_id : f.user_id
+          ) || [];
 
-        // If no friends, return empty array
         if (friendIds.length === 0) return [];
       }
 
+      // 2) Base query: one row per (user, activity_type)
       let query = supabase
         .from('leaderboard')
         .select(`
@@ -53,23 +54,46 @@ export const useLeaderboard = (
           )
         `)
         .eq('time_period', timeRange)
-        .eq('scope', 'global') // Always query from global, filter by friends below
+        .eq('scope', 'global')
         .order('total_seconds', { ascending: false })
-        .limit(10);
+        .limit(100); // a bit higher so "All" has room to merge
 
       if (activityTypeId && activityTypeId !== 'all') {
         query = query.eq('activity_type_id', activityTypeId);
       }
 
-      // If friend scope, filter by friend IDs
       if (scope === 'friend' && friendIds.length > 0) {
         query = query.in('user_id', friendIds);
       }
 
       const { data, error } = await query;
-
       if (error) throw error;
-      return data as LeaderboardEntry[];
+
+      const rows = (data || []) as LeaderboardEntry[];
+
+      // 3) If "All" activities → merge rows per user_id and sum total_seconds
+      if (!activityTypeId || activityTypeId === 'all') {
+        const byUser = new Map<string, LeaderboardEntry>();
+
+        for (const row of rows) {
+          const existing = byUser.get(row.user_id);
+          if (existing) {
+            existing.total_seconds += row.total_seconds;
+          } else {
+            // clone so we don't mutate TanStack cache accidentally
+            byUser.set(row.user_id, { ...row });
+          }
+        }
+
+        const merged = Array.from(byUser.values()).sort(
+          (a, b) => b.total_seconds - a.total_seconds
+        );
+
+        return merged;
+      }
+
+      // 4) For a specific activity type, just return rows as-is
+      return rows;
     },
   });
 };

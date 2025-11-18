@@ -16,9 +16,13 @@ const Leaderboard = () => {
   const { data: activityTypes } = useActivityTypes();
   
   // Get the activity type ID for the selected activity
-  const selectedActivityId = selectedActivity === 'all' 
-    ? null 
-    : activityTypes?.find(a => a.name === selectedActivity)?.id || null;
+  const selectedActivityId =
+  selectedActivity === 'all'
+    ? null
+    : activityTypes?.find(
+        (a) =>
+          a.name.toLowerCase() === selectedActivity?.toLowerCase()
+      )?.id ?? null;
 
   const { data: leaderboardData, isLoading } = useLeaderboard(
     timeRange,

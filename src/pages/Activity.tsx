@@ -20,19 +20,39 @@ const Activity = () => {
   const { data: monthData, isLoading: monthLoading } = useActivityRange(monthStartStr, today);
 
   const formatDuration = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    return `${hours}h ${minutes}m`;
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  return `${hours}h ${minutes}m`;
+};
+
+  const ACTIVITY_ORDER = ['bike', 'stairs', 'stand', 'walk'];
+
+  type AggregatedActivity = {
+    name: string;
+    seconds: number;
   };
 
-  const aggregateByActivity = (data: any[]) => {
-    const aggregated: Record<string, number> = {};
+  // Aggregate and return in fixed order
+  const aggregateByActivity = (data: any[]): AggregatedActivity[] => {
+    const totals: Record<string, number> = {};
+
     data?.forEach((item) => {
-      const name = item.activity_types?.name || 'Unknown';
-      aggregated[name] = (aggregated[name] || 0) + item.total_seconds;
+      const rawName = item.activity_types?.name || 'Unknown';
+      const key = rawName.toLowerCase(); // normalize
+      totals[key] = (totals[key] || 0) + item.total_seconds;
     });
-    return aggregated;
+
+    return ACTIVITY_ORDER
+      .filter((key) => totals[key] != null)
+      .map((key) => ({
+        name: key,
+        seconds: totals[key],
+      }));
   };
+
+  // Optional: simple capitalize helper for display
+  const labelFromKey = (key: string) =>
+    key.charAt(0).toUpperCase() + key.slice(1);
 
   return (
     <AppLayout>
@@ -56,18 +76,16 @@ const Activity = () => {
                   <Skeleton className="h-64" />
                 ) : (
                   <div className="space-y-4">
-                    {dayData?.map((activity) => (
-                      <div key={activity.id} className="flex justify-between items-center p-4 bg-secondary/20 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">{activity.activity_types?.icon}</span>
-                          <div>
-                            <p className="font-semibold capitalize">{activity.activity_types?.name}</p>
-                            <p className="text-sm text-muted-foreground">{activity.session_count} sessions</p>
-                          </div>
-                        </div>
-                        <p className="text-lg font-bold">{formatDuration(activity.total_seconds)}</p>
+                    {aggregateByActivity(dayData || []).map(({ name, seconds }) => (
+                      <div
+                        key={name}
+                        className="flex justify-between items-center p-4 bg-secondary/20 rounded-lg"
+                      >
+                        <p className="font-semibold capitalize">{labelFromKey(name)}</p>
+                        <p className="text-lg font-bold">{formatDuration(seconds)}</p>
                       </div>
                     ))}
+
                     {dayData?.length === 0 && (
                       <div className="h-64 flex items-center justify-center text-muted-foreground">
                         No activity recorded today
@@ -89,12 +107,16 @@ const Activity = () => {
                   <Skeleton className="h-64" />
                 ) : (
                   <div className="space-y-4">
-                    {Object.entries(aggregateByActivity(weekData || [])).map(([activity, seconds]) => (
-                      <div key={activity} className="flex justify-between items-center p-4 bg-secondary/20 rounded-lg">
-                        <p className="font-semibold capitalize">{activity}</p>
+                    {aggregateByActivity(weekData || []).map(({ name, seconds }) => (
+                      <div
+                        key={name}
+                        className="flex justify-between items-center p-4 bg-secondary/20 rounded-lg"
+                      >
+                        <p className="font-semibold capitalize">{labelFromKey(name)}</p>
                         <p className="text-lg font-bold">{formatDuration(seconds)}</p>
                       </div>
                     ))}
+
                     {weekData?.length === 0 && (
                       <div className="h-64 flex items-center justify-center text-muted-foreground">
                         No activity recorded this week
@@ -116,12 +138,16 @@ const Activity = () => {
                   <Skeleton className="h-64" />
                 ) : (
                   <div className="space-y-4">
-                    {Object.entries(aggregateByActivity(monthData || [])).map(([activity, seconds]) => (
-                      <div key={activity} className="flex justify-between items-center p-4 bg-secondary/20 rounded-lg">
-                        <p className="font-semibold capitalize">{activity}</p>
+                    {aggregateByActivity(monthData || []).map(({ name, seconds }) => (
+                      <div
+                        key={name}
+                        className="flex justify-between items-center p-4 bg-secondary/20 rounded-lg"
+                      >
+                        <p className="font-semibold capitalize">{labelFromKey(name)}</p>
                         <p className="text-lg font-bold">{formatDuration(seconds)}</p>
                       </div>
                     ))}
+
                     {monthData?.length === 0 && (
                       <div className="h-64 flex items-center justify-center text-muted-foreground">
                         No activity recorded this month
